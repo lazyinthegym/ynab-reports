@@ -8,13 +8,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModelProvider
 import com.ismael.ynabreports.reports_feature.data.remote.RetrofitClient
 import com.ismael.ynabreports.reports_feature.data.repository.YnabRepositoryImpl
 import com.ismael.ynabreports.reports_feature.domain.use_case.GetCategoriesUseCase
 import com.ismael.ynabreports.reports_feature.presentation.pie_chart.PieChartScreen
 import com.ismael.ynabreports.reports_feature.presentation.pie_chart.PieChartViewModel
 import com.ismael.ynabreports.reports_feature.presentation.pie_chart.PieChartViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +24,12 @@ class MainActivity : ComponentActivity() {
         val repository = YnabRepositoryImpl(apiService)
         val useCase = GetCategoriesUseCase(repository)
         val viewModelFactory = PieChartViewModelFactory(useCase)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(PieChartViewModel::class.java)
+//        val viewModel = ViewModelProvider(this, viewModelFactory).get(PieChartViewModel::class.java)
+
 
         setContent {
             MyApp {
+                val viewModel = getViewModel<PieChartViewModel>()
                 PieChartScreen(viewModel)
             }
         }

@@ -91,4 +91,8 @@ dependencies {
 
     implementation ("com.google.accompanist:accompanist-coil:0.13.0")
 
+    // Koin
+    implementation (platform("io.insert-koin:koin-bom:3.5.1"))
+    implementation("io.insert-koin:koin-core")
+    implementation("io.insert-koin:koin-android")
 }
