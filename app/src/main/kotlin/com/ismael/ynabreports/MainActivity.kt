@@ -1,5 +1,6 @@
 package com.ismael.ynabreports
 
+import SplashScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,12 +9,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.ismael.ynabreports.reports_feature.data.remote.RetrofitClient
-import com.ismael.ynabreports.reports_feature.data.repository.YnabRepositoryImpl
-import com.ismael.ynabreports.reports_feature.domain.use_case.GetCategoriesUseCase
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.ismael.ynabreports.reports_feature.presentation.pie_chart.PieChartScreen
 import com.ismael.ynabreports.reports_feature.presentation.pie_chart.PieChartViewModel
-import com.ismael.ynabreports.reports_feature.presentation.pie_chart.PieChartViewModelFactory
+import kotlinx.serialization.Serializable
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApp {
                 val viewModel = getViewModel<PieChartViewModel>()
-                PieChartScreen(viewModel)
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "splash_screen") {
+                    composable("splash_screen") { SplashScreen(navController = navController) }
+                    composable("pie_chart_screen") { PieChartScreen(viewModel) }
+                }
+
             }
         }
     }
@@ -34,3 +40,7 @@ fun MyApp(content: @Composable () -> Unit) {
         Surface(modifier = Modifier.fillMaxSize(), content = content)
     }
 }
+
+@Serializable
+object SplashScreen
+object PieChartScreen

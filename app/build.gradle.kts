@@ -95,4 +95,14 @@ dependencies {
     implementation (platform("io.insert-koin:koin-bom:3.5.1"))
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
+
+    // Lottie compose for the splash screen
+    implementation("com.airbnb.android:lottie-compose:4.2.2")
+
+    // Navigation Compose
+    implementation ("androidx.navigation:navigation-compose:2.8.0-beta03")
+
+    // Kotlin Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
 }
