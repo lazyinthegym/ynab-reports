@@ -19,14 +19,6 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val apiService = RetrofitClient.ynabAPIService
-        val repository = YnabRepositoryImpl(apiService)
-        val useCase = GetCategoriesUseCase(repository)
-        val viewModelFactory = PieChartViewModelFactory(useCase)
-//        val viewModel = ViewModelProvider(this, viewModelFactory).get(PieChartViewModel::class.java)
-
-
         setContent {
             MyApp {
                 val viewModel = getViewModel<PieChartViewModel>()

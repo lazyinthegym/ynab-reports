@@ -6,8 +6,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class DataDto(
-    @Json(name = "category_groups")
-    val categoryGroups: List<CategoryGroupDto>,
-    @Json(name = "server_knowledge")
-    val serverKnowledge: Int
+    @Json(name = "month")
+    val month: MonthDto = MonthDto()
 )

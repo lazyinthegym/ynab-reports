@@ -1,24 +1,23 @@
 package com.ismael.ynabreports.reports_feature.data.remote.dto
 
 
-import com.ismael.ynabreports.reports_feature.domain.model.Category
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CategoryDto(
     @Json(name = "activity")
-    val activity: Int,
+    val activity: Int = 0,
     @Json(name = "balance")
-    val balance: Int,
+    val balance: Int = 0,
     @Json(name = "budgeted")
-    val budgeted: Int,
+    val budgeted: Int = 0,
     @Json(name = "category_group_id")
-    val categoryGroupId: String,
+    val categoryGroupId: String = "",
     @Json(name = "category_group_name")
-    val categoryGroupName: String,
+    val categoryGroupName: String = "",
     @Json(name = "deleted")
-    val deleted: Boolean,
+    val deleted: Boolean = false,
     @Json(name = "goal_cadence")
     val goalCadence: Int? = null,
     @Json(name = "goal_cadence_frequency")
@@ -44,18 +43,13 @@ data class CategoryDto(
     @Json(name = "goal_under_funded")
     val goalUnderFunded: Int? = null,
     @Json(name = "hidden")
-    val hidden: Boolean,
+    val hidden: Boolean = false,
     @Json(name = "id")
-    val id: String,
+    val id: String = "",
     @Json(name = "name")
-    val name: String,
+    val name: String = "",
     @Json(name = "note")
     val note: String? = null,
     @Json(name = "original_category_group_id")
     val originalCategoryGroupId: String? = null
-)
-
-fun CategoryDto.toCategory() = Category(
-    name = name,
-    activity = activity
 )

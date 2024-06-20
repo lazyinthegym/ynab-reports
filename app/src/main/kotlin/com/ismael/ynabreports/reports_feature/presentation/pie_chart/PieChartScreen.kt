@@ -33,7 +33,7 @@ fun PieChartScreen(viewModel: PieChartViewModel) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
         } else {
             val data = categoriesState.categories.associate { category->
-                category.name to category.activity / 1000
+                category.name to category.activityInEuro
             }
             PieChart(data)
         }
